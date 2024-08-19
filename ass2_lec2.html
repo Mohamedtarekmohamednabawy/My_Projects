@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Ass 2</title>
+
+    <style>
+        .text-primary {
+            /* for change I have to use important property to override default bootstrap color (primary) */
+            color: red !important;
+        }
+
+        .btn-edit {
+            /* 
+            for change I( don't) have to use important property to override default bootstrap color 
+            because I didn't specify the color and bg of the button 
+            if I had specified colorand bg ,then i would have use important property  
+            */
+            background-color: #ff9800;
+            color: rgb(0, 0, 0);
+        }
+
+        .bg-success {
+            /* for change bg  I have to use important property to override default bootstrap color (success) */
+            background-color: #0033cc !important;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <h1 class="text-primary">Customized Bootstrap Colors using css</h1>
+
+        <button class="btn btn-edit">Custom Button</button>
+
+        <div class=" bg-success  p-3 my-3">
+            This is a custom primary background.
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

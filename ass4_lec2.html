@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFS vs RTL in Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css">
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Comparison: RFS vs RTL in Bootstrap</h1>
+        <table class="table table-bordered mt-4">
+            <thead class="table-light">
+                <tr>
+                    <th>Feature</th>
+                    <th>RFS (Responsive Font Sizes)</th>
+                    <th>RTL (Right-to-Left)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Purpose</td>
+                    <td>Adjusts font sizes dynamically based on the viewport size.</td>
+                    <td>Provides support for languages that are read from right to left.</td>
+                </tr>
+                <tr>
+                    <td>Use Case</td>
+                    <td>Ensures text is readable on devices of different sizes.</td>
+                    <td>Needed for Arabic, Hebrew, Persian, etc.</td>
+                </tr>
+                <tr>
+                    <td>CSS Property</td>
+                    <td>Utilizes <code>clamp()</code> function for font sizes.</td>
+                    <td>Changes the direction of text, floats, and other directional styles.</td>
+                </tr>
+                <tr>
+                    <td>Default Behavior</td>
+                    <td>Enabled by default in Bootstrap 5.</td>
+                    <td>Requires <code>bootstrap-rtl.css</code> file.</td>
+                </tr>
+                <tr>
+                    <td>Compatibility</td>
+                    <td>Works across all devices and screen sizes.</td>
+                    <td>Essential for websites with RTL languages.</td>
+                </tr>
+                <tr>
+                    <td>Example Use</td>
+                    <td>No additional setup required in Bootstrap 5.</td>
+                    <td>Include RTL CSS file to enable RTL support.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="border border-primary border-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="p-3 mb-3 border bg-light">
+                <h1 class="display-4">عنوان رئيسي</h1>
+                <p class="lead"> نص تجريبي.</p>
+            </div>
+        </div>
+        <hr class="border border-primary border-4">
+        <div class="col-12">
+            <div class="p-3 mb-3 border bg-light custom-text">
+                <p>نص تجريبي.، هذا نص بحجم خط مستجيب</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
