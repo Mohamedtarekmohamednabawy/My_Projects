@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counter</title>
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label,
+        input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #5600b8;
+            color: white;
+        }
+
+        #vowelCountMessage {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Vowel Counter</h2>
+        <label for="stringInput">Enter a string:</label>
+        <input type="text" id="stringInput" placeholder="Your String">
+        <button onclick="countVowels()">Count Vowels</button>
+        <div id="vowelCountMessage"></div>
+    </div>
+
+    <script>
+        function countVowels() {
+            const inputString = document.getElementById('stringInput').value;
+            const vowels = 'aeiouAEIOU';
+            let count = 0;
+
+            for (let char of inputString) {
+                if (vowels.includes(char)) {
+                    count++;
+                }
+            }
+
+            const message = count > 0 ? `The number of vowels in the string is: ${count}` : 'No vowels found in the string.';
+            document.getElementById('vowelCountMessage').innerText = message;
+            document.getElementById('stringInput').value = '';
+            document.getElementById('stringInput').focus();
+        }
+    </script>
+</body>
+
+</html>

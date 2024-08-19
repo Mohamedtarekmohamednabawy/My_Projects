@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Book App</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #output {
+            font-size: 16px;
+            color: #333;
+            margin-top: 20px;
+            white-space: pre-line;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #0056b3;
+            color: rgb(255, 255, 255);
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #20bd0c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Phone Book App</h2>
+        <button onclick="phoneBookApp()">Start Phone Book App</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const contacts = [];
+
+        function phoneBookApp() {
+            let operation;
+
+            while (true) {
+                operation = prompt("Enter an operation (add, search, or exit):");
+
+                if (operation === null || operation.toLowerCase() === "exit") {
+                    alert("Exiting the phone book app.");
+                    break;
+                }
+
+                if (operation.toLowerCase() === "add") {
+                    addContact();
+                } else if (operation.toLowerCase() === "search") {
+                    searchContact();
+                } else {
+                    alert("Invalid operation. Please enter 'add', 'search', or 'exit'.");
+                }
+            }
+        }
+
+        function addContact() {
+            const name = prompt("Enter the contact name:");
+            const phone = prompt("Enter the contact phone number:");
+
+            if (name && phone) {
+                const contact = { name, phone };
+                contacts.push(contact);
+                alert(`Contact added: ${name}, ${phone}`);
+            } else {
+                alert("Invalid contact information. Please try again.");
+            }
+        }
+
+        function searchContact() {
+            const searchQuery = prompt("Enter the name or phone number to search for:");
+
+            if (searchQuery) {
+                const foundContacts = contacts.filter(contact =>
+                    contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    contact.phone.includes(searchQuery)
+                );
+
+                if (foundContacts.length > 0) {
+                    let result = "Search Results:\n";
+                    foundContacts.forEach(contact => {
+                        result += `Name: ${contact.name}, Phone: ${contact.phone}\n`;
+                    });
+                    document.getElementById('output').innerText = result;
+                } else {
+                    document.getElementById('output').innerText = "No contacts found.";
+                }
+            } else {
+                alert("Invalid search query. Please try again.");
+            }
+        }
+    </script>
+</body>
+
+</html>

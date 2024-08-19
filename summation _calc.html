@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summation Calculator</title>
+    <style>
+        body {
+            background-color: #cacaca;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        label,
+        input,
+        button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        #resultMessage {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Summation Calculator</h2>
+        <p>This is the first release of our calculator. Currently, it only supports summation.</p>
+
+        <label for="firstNumber">Enter the first number:</label>
+        <input type="number" id="firstNumber" placeholder="First Number" required><br>
+
+        <label for="secondNumber">Enter the second number:</label>
+        <input type="number" id="secondNumber" placeholder="Second Number" required><br>
+
+        <button onclick="calculateSum()">Calculate Sum</button>
+        <button id="resetButton" onclick="resetFields()">Reset</button><br><br>
+
+
+        <div id="resultMessage"></div>
+    </div>
+
+    <script>
+        function calculateSum() {
+            const firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            const secondNumber = parseFloat(document.getElementById('secondNumber').value);
+
+            if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+
+            const sum = firstNumber + secondNumber;
+            document.getElementById('resultMessage').innerText = `${firstNumber} + ${secondNumber} = ${sum}`;
+        }
+        function resetFields() {
+            document.getElementById('firstNumber').value = '';
+            document.getElementById('secondNumber').value = '';
+            document.getElementById('resultMessage').innerText = '';
+        }
+    </script>
+</body>
+
+</html>

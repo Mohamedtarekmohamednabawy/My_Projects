@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            background-color: #539cdb;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label,
+        input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        #welcomeMessage {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Welcome to the Website</h2>
+
+        <label for="firstName">Enter your first name (required):</label>
+        <input type="text" id="firstName" placeholder="First Name" required><br>
+
+        <label for="lastName">Enter your last name (required):</label>
+        <input type="text" id="lastName" placeholder="Last Name" required><br>
+
+        <button onclick="confirmName()">Confirm Full Name</button><br><br>
+
+        <div id="confirmation"></div>
+
+        <label for="birthYear">Enter your birth year (required):</label>
+        <input type="number" id="birthYear" placeholder="Birth Year" required><br>
+
+        <button onclick="welcomeUser()">Submit</button>
+        <button id="resetButton" onclick="resetFields()">Reset</button><br><br>
+
+
+        <div id="welcomeMessage"></div>
+    </div>
+
+    <script>
+        function confirmName() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            document.getElementById('confirmation').innerText = `Your name is  ${firstName} ${lastName}.`;
+        }
+
+        function welcomeUser() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const birthYear = parseInt(document.getElementById('birthYear').value);
+            const currentYear = new Date().getFullYear();
+            const age = currentYear - birthYear;
+
+            // Validation checks
+            if (firstName.trim() === "") {
+                alert("Please enter your first name.");
+                return;
+            }
+
+            if (lastName.trim() === "") {
+                alert("Please enter your last name.");
+                return;
+            }
+
+            if (!birthYear || birthYear > currentYear) {
+                alert("Please enter a valid birth year.");
+                return;
+            }
+
+            document.getElementById('welcomeMessage').innerText = `Welcome ${firstName} ${lastName}, you are ${age} years old.`;
+        }
+        function resetFields() {
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('birthYear').value = '';
+            document.getElementById('welcomeMessage').innerText = '';
+            document.getElementById('confirmation').innerText = ''
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ass8</title>
+    <style>
+        p {
+            font-family: sans-serif;
+            font-size: 2em;
+            color: black;
+        }
+
+        img {
+            width: 200px;
+            height: 100px;
+            padding: 10px 0;
+        }
+
+        .parent1 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            border: 2px solid royalblue;
+            padding: 10px 0;
+            justify-content: space-between;
+        }
+
+        .parent2 {
+            display: grid;
+            border: 2px solid royalblue;
+            padding: 10px 0;
+
+        }
+
+        .parent3 {
+            display: grid;
+            border: 2px solid royalblue;
+            padding: 10px 0;
+            grid-template-columns: 200px 200px 200px 200px 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Flex Box : </p>
+    <p>
+        One-dimensional layout: Flexbox is designed for laying out items in a single direction, either as a row or a
+        column.
+        <br>
+        Alignment: It excels at distributing space within an item and aligning content.<br>
+        Use cases: Best for simple layouts, like centering elements, aligning items, or distributing space within a
+        container.<br>
+        Responsiveness: Easily adjusts to different screen sizes with properties like flex-grow, flex-shrink, and
+        flex-basis.
+        <br>
+    </p>
+    <div class="parent1">
+        <img src="artwork-fantasy-art-digital-art-forest-wallpaper-preview.jpg" alt="photo">
+        <img src="artwork-landscape-sky-mountains-wallpaper-preview.jpg" alt="photo">
+        <img src="artwork-nature-landscape-fantasy-art-wallpaper-preview.jpg" alt="photo">
+        <img src="lake-blue-moonlight-moon-wallpaper-preview.jpg" alt="photo">
+        <img src="vector-forest-sunset-forest-sunset-forest-wallpaper-preview.jpg" alt="photo">
+    </div>
+    <p>Grid Box : </p>
+    <p>
+        Two-dimensional layout: Grid is designed for layouts in both rows and columns.<br>
+        Complex layouts: It can handle more complex, grid-based layouts with precise control over placement of
+        items.<br>
+        Use cases: Ideal for web page layouts, including defining main areas and overlapping elements.<br>
+        Responsiveness: Provides robust responsive design capabilities, with features like grid-template-areas,
+        grid-template-rows, and grid-template-columns.
+        <br>
+    </p>
+    <div class="parent2">
+        <img src="artwork-fantasy-art-digital-art-forest-wallpaper-preview.jpg" alt="photo">
+        <img src="artwork-landscape-sky-mountains-wallpaper-preview.jpg" alt="photo">
+        <img src="artwork-nature-landscape-fantasy-art-wallpaper-preview.jpg" alt="photo">
+        <img src="lake-blue-moonlight-moon-wallpaper-preview.jpg" alt="photo">
+        <img src="vector-forest-sunset-forest-sunset-forest-wallpaper-preview.jpg" alt="photo">
+    </div>
+    <p>Grid Box : </p>
+    <div class="parent3">
+        <img src="artwork-fantasy-art-digital-art-forest-wallpaper-preview.jpg" alt="photo">
+        <img src="artwork-landscape-sky-mountains-wallpaper-preview.jpg" alt="photo">
+        <img src="artwork-nature-landscape-fantasy-art-wallpaper-preview.jpg" alt="photo">
+        <img src="lake-blue-moonlight-moon-wallpaper-preview.jpg" alt="photo">
+        <img src="vector-forest-sunset-forest-sunset-forest-wallpaper-preview.jpg" alt="photo">
+    </div>
+
+
+</body>
+
+</html>

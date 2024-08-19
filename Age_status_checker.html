@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Status Checker</title>
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #statusMessage {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #790073;
+            color: white;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Age Status Checker</h2>
+        <button onclick="checkAge()">Enter Your Age</button>
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        function checkAge() {
+            let age;
+            let statusMessage = document.getElementById('statusMessage');
+
+            while (true) {
+                age = prompt("Please enter your age (positive integer only):");
+
+                if (age === null) {
+                    break;
+                }
+
+                if (!/^\d+$/.test(age)) { // Regular expression to check if the input is a positive integer
+                    alert("Invalid input. Please enter a positive integer.");
+                    continue;
+                }
+
+                age = parseInt(age);
+
+                let status;
+
+                if (age >= 1 && age <= 10) {
+                    status = "Child";
+                } else if (age >= 11 && age <= 18) {
+                    status = "Teenager";
+                } else if (age >= 19 && age <= 50) {
+                    status = "Grown up";
+                } else if (age > 50) {
+                    status = "Old";
+                }
+
+                statusMessage.innerText = `You are a ${status}.`;
+                const anotherAge = confirm("Do you want to enter another age?");
+                if (!anotherAge) {
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

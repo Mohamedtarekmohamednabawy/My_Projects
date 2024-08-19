@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Watch with Alarm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0e6ed;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .watch-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .day-display {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .time-display {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .am-pm {
+            font-size: 18px;
+            margin-left: 5px;
+            vertical-align: super;
+        }
+
+        .alarm-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .alarm-setup {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .alarm-setup input {
+            width: 50px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            background-color: #f7f7f7;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .set-btn {
+            background-color: #00bfff;
+        }
+
+        .clear-btn {
+            background-color: #ff5c5c;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Digital Watch Section -->
+    <div class="watch-container">
+        <div class="day-display" id="dayDisplay">
+            <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+        </div>
+        <div class="time-display" id="digitalClock">00:00:00</div>
+        <div class="am-pm" id="amPm">AM</div>
+        <h3>Digital Clock</h3>
+    </div>
+
+    <!-- Alarm Clock Section -->
+    <div class="alarm-container">
+        <h4>Set Alarm After</h4>
+        <div class="alarm-setup">
+            <div>
+                <label for="hours">Hours</label>
+                <input type="number" id="hours" min="0" max="23" value="0">
+            </div>
+            <div>
+                <label for="minutes">Minutes</label>
+                <input type="number" id="minutes" min="0" max="59" value="0">
+            </div>
+            <div>
+                <label for="seconds">Seconds</label>
+                <input type="number" id="seconds" min="0" max="59" value="0">
+            </div>
+        </div>
+        <button class="set-btn" onclick="setAlarm()">Set</button>
+        <button class="clear-btn" onclick="clearAlarm()">Clear</button>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const amPm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds}`;
+            document.getElementById('digitalClock').textContent = timeString;
+            document.getElementById('amPm').textContent = amPm;
+
+            highlightDay(now.getDay());
+        }
+
+        function highlightDay(dayIndex) {
+            const days = document.getElementById('dayDisplay').children;
+            let adjustedIndex = dayIndex === 0 ? 6 : dayIndex - 1;
+            for (let i = 0; i < days.length; i++) {
+                days[i].style.color = i === adjustedIndex ? '#007bff' : '#777';
+            }
+        }
+
+
+        let alarmTimeout;
+
+        function setAlarm() {
+            const hours = parseInt(document.getElementById('hours').value);
+            const minutes = parseInt(document.getElementById('minutes').value);
+            const seconds = parseInt(document.getElementById('seconds').value);
+            const totalMilliseconds = (hours * 3600 + minutes * 60 + seconds) * 1000;
+
+            if (totalMilliseconds > 0) {
+                alarmTimeout = setTimeout(() => {
+                    alert("Time's up! Alarm ringing!");
+                }, totalMilliseconds);
+                alert('Alarm set!');
+            } else {
+                alert('Please set a valid time for the alarm.');
+            }
+        }
+
+        function clearAlarm() {
+            if (alarmTimeout) {
+                clearTimeout(alarmTimeout);
+                alarmTimeout = null;
+                alert('Alarm cleared!');
+            }
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+
+</html>

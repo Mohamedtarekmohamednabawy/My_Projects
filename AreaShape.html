@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label,
+        input,
+        select {
+            display: block;
+            margin: 10px auto;
+            font-size: 18px;
+        }
+
+        input,
+        select {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Area Calculator</h2>
+        <label for="shape">Choose a shape:</label>
+        <select id="shape">
+            <option value="circle">Circle</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="triangle">Triangle</option>
+            <option value="square">Square</option>
+        </select>
+
+        <div id="dimensions"></div>
+        <button onclick="calculateArea()">Calculate Area</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateArea() {
+            const shape = document.getElementById('shape').value;
+            let area;
+
+            if (shape === 'circle') {
+                const radius = parseFloat(prompt("Enter the radius of the circle:"));
+                if (!isNaN(radius) && radius > 0) {
+                    area = Math.PI * Math.pow(radius, 2);
+                } else {
+                    alert("Please enter a valid positive number for the radius.");
+                    return;
+                }
+            } else if (shape === 'rectangle') {
+                const width = parseFloat(prompt("Enter the width of the rectangle:"));
+                const height = parseFloat(prompt("Enter the height of the rectangle:"));
+                if (!isNaN(width) && !isNaN(height) && width > 0 && height > 0) {
+                    area = width * height;
+                } else {
+                    alert("Please enter valid positive numbers for the width and height.");
+                    return;
+                }
+            } else if (shape === 'triangle') {
+                const base = parseFloat(prompt("Enter the base of the triangle:"));
+                const height = parseFloat(prompt("Enter the height of the triangle:"));
+                if (!isNaN(base) && !isNaN(height) && base > 0 && height > 0) {
+                    area = 0.5 * base * height;
+                } else {
+                    alert("Please enter valid positive numbers for the base and height.");
+                    return;
+                }
+            } else if (shape === 'square') {
+                const side = parseFloat(prompt("Enter the side length of the square:"));
+                if (!isNaN(side) && side > 0) {
+                    area = Math.pow(side, 2);
+                } else {
+                    alert("Please enter a valid positive number for the side length.");
+                    return;
+                }
+            } else {
+                alert("Please select a valid shape.");
+                return;
+            }
+
+            document.getElementById('result').innerText = `The area of the ${shape} is ${area.toFixed(2)} square units.`;
+        }
+    </script>
+</body>
+
+</html>
